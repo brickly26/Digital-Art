@@ -4,12 +4,14 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-
+    user: async () => {
+      return User.find({});
+    }
   },
 
-  Mutation: {
+  // Mutation: {
 
-  }
+  // }
 }
 
 module.exports = resolvers;
