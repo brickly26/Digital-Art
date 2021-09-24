@@ -5,7 +5,14 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    orders: [Order]
+
+    password: String
+    saveProduct: [Product]
+  }
+
+  type Category {
+    _id: ID
+    name: String
   }
 
   type Product {
