@@ -5,7 +5,21 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    password: String
+  }
+
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    price: Float
+    sold: Boolean
+    category: Category
+  }
+
+  type Category {
+    _id: ID
+    name: String
   }
 
   type Auth {
