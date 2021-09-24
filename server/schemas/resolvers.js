@@ -4,8 +4,8 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async () => {
-      return await User.find();
+    me: async (parent, args, context) => {
+      return await User.findById(context.user._id).populate('saveProduct');
     },
   },
 
