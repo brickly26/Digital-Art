@@ -5,7 +5,6 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-
     password: String
     saveProduct: [Product]
   }
@@ -23,11 +22,6 @@ const typeDefs = gql`
     price: Float
     sold: Boolean
     category: Category
-  }
-
-  type Category {
-    _id: ID
-    name: String
   }
 
   type Auth {
@@ -48,8 +42,8 @@ const typeDefs = gql`
     me: User
     categories: [Category]
     products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    order(_id: ID!): Order
+    product(_id: ID): Product
+    order(_id: ID): Order
     checkout(products: [ID]!): Checkout
   }
 
