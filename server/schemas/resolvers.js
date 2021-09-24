@@ -102,6 +102,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    pdateUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
   },
 };
 
