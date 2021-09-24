@@ -1,11 +1,24 @@
-import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NavMenu from "./components/NavMenu";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Hello World!!!!</h1>
-    </div>
+    <>
+      <Router>
+        <NavMenu />
+        <Switch>
+          <Route path="/about">
+          </Route>
+          <Route path="/contact">
+          </Route>
+          <Route path="/projects">
+          </Route>
+          <Route path="/">
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
-export default App;
+
