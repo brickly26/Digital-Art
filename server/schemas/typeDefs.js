@@ -18,9 +18,14 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
-    image: String
     price: Float
     category: Category
+    image: [Image]
+  }
+
+  type Image {
+    _id: ID
+    path: String!
   }
 
   type Auth {
