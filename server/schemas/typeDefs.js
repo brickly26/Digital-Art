@@ -5,7 +5,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    cart: [Cart]
+    orders: [Order]
   }
 
   type Product {
@@ -28,7 +28,7 @@ const typeDefs = gql`
     user: User
   }
 
-  type Cart {
+  type Order {
     _id: ID
     products: [Product]
   }
@@ -42,7 +42,7 @@ const typeDefs = gql`
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
-    cart(_id: ID!): Cart
+    order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
   }
 
@@ -50,6 +50,7 @@ const typeDefs = gql`
     addUser(username: String!, password: String!, email: String!): Auth
     login(email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
+    addOrder(products: [ID]!): Order
   }
 `;
 

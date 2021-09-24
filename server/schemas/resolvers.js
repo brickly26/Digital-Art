@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Category, Product, Cart } = require('../models');
+const { User, Category, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -29,24 +29,24 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id).populate('category');
     },
-    cart: async (parent, { _id }, context) => {
+    order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'cart.products',
+          path: 'orders.products',
           populate: 'category',
         });
 
-        return user.cart.id(_id);
+        return user.orders.id(_id);
       }
 
       throw new AuthenticationError('Not logged in');
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const cart = new Cart({ products: args.products });
+      const order = new Order({ products: args.products });
       const line_items = [];
 
-      const { products } = await cart.populate('products').execPopulate();
+      const { products } = await order.populate('products').execPopulate();
 
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
@@ -102,11 +102,25 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    pdateUser: async (parent, args, context) => {
+    updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
           new: true,
         });
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    addOrder: async (parent, { products }, context) => {
+      console.log(context);
+      if (context.user) {
+        const order = new Order({ products });
+
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
+
+        return order;
       }
 
       throw new AuthenticationError('Not logged in');
