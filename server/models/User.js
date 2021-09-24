@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Product = require("./Product");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
@@ -19,6 +20,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  saveProduct: [Product.schema],
 });
 
 userSchema.pre("save", async function (next) {
