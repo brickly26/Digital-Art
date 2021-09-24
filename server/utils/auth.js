@@ -7,7 +7,6 @@ module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.headers.authorization || req.body.token || req.query.token;
 
-    console.log('Clicked');
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
