@@ -1,16 +1,24 @@
-<<<<<<< HEAD
-import NavMenu from "./components/navmenu";
-=======
-import "./App.css";
->>>>>>> b9d4806f4293b0ae0bb8b71e835dd4877d2bc451
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NavMenu from "./components/NavMenu";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <App />
-      <NavMenu />
-    </div>
+    <>
+      <Router>
+        <NavMenu />
+        <Switch>
+          <Route path="/about">
+          </Route>
+          <Route path="/contact">
+          </Route>
+          <Route path="/projects">
+          </Route>
+          <Route path="/">
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
-export default App;
+
