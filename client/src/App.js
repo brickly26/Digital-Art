@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavMenu from "./components/NavMenu";
+import Info from './components/Info';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
+      <Info />
     </>
   );
 }
