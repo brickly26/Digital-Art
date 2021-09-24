@@ -30,6 +30,8 @@ const typeDefs = gql`
   type Query {
     me: User
     categories: [Category]
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
   }
 
   type Mutation {
