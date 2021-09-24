@@ -125,6 +125,13 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    updateProduct: async (parent, { _id }) => {
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $set: { sold: true } },
+        { new: true }
+      );
+    },
   },
 };
 
