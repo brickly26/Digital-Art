@@ -22,6 +22,7 @@ const typeDefs = gql`
     price: Float
     sold: Boolean
     category: Category
+
   }
 
   type Auth {
@@ -53,7 +54,11 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     addOrder(products: [ID]!): Order
     updateProduct(_id: ID!, sold: Boolean): Product
+   
   }
 `;
+
+// addProduct(name: String!, description: String!, price: Float!, image: Upload!, category: Category!): Product
+// scalar Upload 
 
 module.exports = typeDefs;

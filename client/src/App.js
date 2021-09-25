@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavMenu from "./components/NavMenu";
 import Info from './components/Info';
+import SignupForm from './components/SignupForm';
+import LoginForm from './components/LoginForm';
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
         </Switch>
       </Router>
       <Info />
+      <SignupForm />
+      <LoginForm />
     </>
   );
 }

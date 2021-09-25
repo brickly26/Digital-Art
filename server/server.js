@@ -1,5 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
+const multer = require('multer');
 const path = require('path');
 
 const { typeDefs, resolvers } = require('./schemas');

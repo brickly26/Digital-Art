@@ -80,6 +80,8 @@ const resolvers = {
     },
   },
 
+  // Upload: GraphQLUpload,
+
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -133,6 +135,21 @@ const resolvers = {
         { new: true }
       );
     },
+    // addProduct: async (parent, {name, description, image, price, category}, context) => {
+    //   if (context.user) {
+
+    //     const { stream, filename, mimetype, encoding } = await filename;
+    //     const bucket = new 
+
+    //     return await Product.create({
+    //       name,
+    //       description,
+    //       image,
+    //       price,
+    //       category
+    //     })
+    //   }
+    // }
   },
 };
 
