@@ -26,11 +26,6 @@ const typeDefs = gql`
     image: [Image]
   }
 
-  type Category {
-    _id: ID
-    name: String
-  }
-
   type Auth {
     token: ID
     user: User
@@ -49,8 +44,8 @@ const typeDefs = gql`
     me: User
     categories: [Category]
     products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    order(_id: ID!): Order
+    product(_id: ID): Product
+    order(_id: ID): Order
     checkout(products: [ID]!): Checkout
   }
 
