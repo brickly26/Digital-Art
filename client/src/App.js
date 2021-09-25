@@ -15,6 +15,8 @@ import NavMenu from './components/NavMenu';
 // import LoginForm from './components/LoginForm';
 // import SignupForm from './components/SignupForm';
 import Cart from './components/Cart';
+import Home from './pages/Home';
+
 import { StoreProvider } from './utils/GlobalState';
 
 // Construct our main GraphQL API endpoint
@@ -50,6 +52,7 @@ function App() {
           <div className="container">
             <Route exact path="/">
               <NavMenu />
+              <Home />
             </Route>
             <Route exact path="/login">
               <Login />
