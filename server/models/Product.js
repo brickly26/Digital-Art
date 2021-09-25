@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
@@ -12,20 +12,26 @@ const productSchema = new Schema({
     type: String,
   },
   image: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Image',
+    required: true,
   },
   price: {
     type: Number,
     required: true,
     min: 0.99,
   },
+  sold: {
+    type: Boolean,
+    default: false,
+  },
   category: {
     type: Schema.Types.ObjectId,
-    ref: "Category",
+    ref: 'Category',
     required: true,
   },
 });
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
