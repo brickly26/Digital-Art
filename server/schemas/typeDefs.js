@@ -1,11 +1,12 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  
+
   type User {
     _id: ID
     username: String
     email: String
-
     password: String
     saveProduct: [Product]
   }
@@ -23,11 +24,6 @@ const typeDefs = gql`
     sold: Boolean
     category: Category
     image: [Image]
-  }
-
-  type Image {
-    _id: ID
-    path: String!
   }
 
   type Category {
@@ -64,7 +60,11 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     addOrder(products: [ID]!): Order
     updateProduct(_id: ID!, sold: Boolean): Product
+   
   }
 `;
+
+// addProduct(name: String!, description: String!, price: Float!, image: Upload!, category: Category!): Product
+// scalar Upload 
 
 module.exports = typeDefs;
