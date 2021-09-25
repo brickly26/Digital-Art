@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -14,6 +14,8 @@ import Profile from './pages/Profile';
 import NavMenu from './components/NavMenu';
 // import LoginForm from './components/LoginForm';
 // import SignupForm from './components/SignupForm';
+import Cart from './components/Cart';
+import { StoreProvider } from './utils/GlobalState';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,6 +45,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <StoreProvider>
         <div className="flex-column justify-flex-start min-100-vh">
           <div className="container">
             <Route exact path="/">
@@ -60,8 +63,10 @@ function App() {
             <Route exact path="/profiles/:username">
               <Profile />
             </Route>
+            <Cart />
           </div>
         </div>
+        </StoreProvider>
       </Router>
     </ApolloProvider>
   );
