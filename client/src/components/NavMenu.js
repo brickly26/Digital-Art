@@ -156,7 +156,12 @@ export default function NavMenu() {
             Profile
           </NavLink>
         </li>
-        <button className='login-btn'>Login</button>
+        <NavLink to="/login"
+            onClick={() => setShowNav(!showNav)}
+            role="button"
+            onKeyDown={() => setShowNav(!showNav)}
+            tabIndex={0}
+            className='login-btn'>Login</NavLink>
       </ul>
     </NavStyles>
   );
