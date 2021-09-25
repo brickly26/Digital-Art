@@ -1,9 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavMenu from './components/NavMenu';
-import Info from './components/Info';
-import SignupForm from './components/SignupForm';
-import LoginForm from './components/LoginForm';
-import Login from './pages/Login';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,15 +6,27 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import NavMenu from './components/NavMenu';
+// import LoginForm from './components/LoginForm';
+// import SignupForm from './components/SignupForm';
 import Cart from './components/Cart';
 import { StoreProvider } from './utils/GlobalState';
 
+// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -29,31 +36,40 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-export default function App() {
+function App() {
   return (
     <ApolloProvider client={client}>
-      <StoreProvider>
-        <Router>
-          <NavMenu />
-          <Switch>
-            <Route path="/about"></Route>
-            <Route path="/contact"></Route>
-            <Route path="/projects"></Route>
-            <Route path="/"></Route>
-            <Route path="/login">
+      <Router>
+        <StoreProvider>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <div className="container">
+            <Route exact path="/">
+              <NavMenu />
+            </Route>
+            <Route exact path="/login">
               <Login />
             </Route>
-          </Switch>
-        </Router>
-        <Info />
-        <SignupForm />
-        <LoginForm />
-        <Cart />
-      </StoreProvider>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/me">
+              <Profile />
+            </Route>
+            <Route exact path="/profiles/:username">
+              <Profile />
+            </Route>
+            <Cart />
+          </div>
+        </div>
+        </StoreProvider>
+      </Router>
     </ApolloProvider>
   );
 }
+
+export default App;
