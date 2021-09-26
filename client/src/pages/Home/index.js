@@ -19,8 +19,8 @@ const Home = () => {
                 <div class="site-header-inner">
                     <div class="brand header-brand">
                         <h1 class="m-0">
-                            <button>
-								<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <a href="/#">
+	                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
 									<title>Digi Art</title>
 								    <defs>
 								        <linearGradient x1="0%" y1="100%" x2="50%" y2="0%" id="logo-a">
@@ -38,7 +38,7 @@ const Home = () => {
 								        <path d="M13.666 31.889c7.547 0 10.924-7.307 10.924-14.854 0-7.547-3.377-7.027-10.924-7.027C6.118 10.008 0 13.055 0 20.603c0 7.547 6.118 11.286 13.666 11.286z" fill="url(#logo-b)" transform="matrix(-1 0 0 1 24.59 0)"/>
 								    </g>
 								</svg>
-                            </button>
+                            </a>
                         </h1>
                     </div>
                 </div>
