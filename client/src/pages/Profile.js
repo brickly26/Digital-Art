@@ -20,7 +20,9 @@ function Profile() {
         {user ? (
           <>
             <h1>Hello {user.username}</h1>
-            <h2>Order History for {user.username};</h2>
+            <h2>
+              Order History for {user.username};
+            </h2>
             {user.orders.map((order) => (
               <div key={order._id} className="my-2">
                 <h3>
@@ -42,12 +44,10 @@ function Profile() {
               </div>
             ))}
           </>
-        ) : (
-          <h1>Oops! No user was found.</h1>
-        )}
+        ) : <h1>Oops! No user was found.</h1>}
       </div>
     </>
   );
 }
 
-export default Profile;
+export default Profile
