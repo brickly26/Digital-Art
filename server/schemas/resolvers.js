@@ -6,8 +6,14 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      console.log(context);
-      return await User.findById(context.user._id).populate('saveProduct');
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate(
+          'saveProduct'
+        );
+        return user;
+      }
+
+      throw new AuthenticationError('Not logged in');
     },
     categories: async () => {
       return await Category.find();
@@ -115,7 +121,6 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     addOrder: async (parent, { products }, context) => {
-      console.log(context);
       if (context.user) {
         const order = new Order({ products });
 
@@ -139,7 +144,7 @@ const resolvers = {
     //   if (context.user) {
 
     //     const { stream, filename, mimetype, encoding } = await filename;
-    //     const bucket = new 
+    //     const bucket = new
 
     //     return await Product.create({
     //       name,
