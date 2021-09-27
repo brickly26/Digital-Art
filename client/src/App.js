@@ -64,7 +64,7 @@ function App() {
             <Route exact path="/me">
               <Profile />
             </Route>
-            <Route exact path="/profiles/:username">
+            <Route exact path="/profile">
               <Profile />
             </Route>
             <Cart />
