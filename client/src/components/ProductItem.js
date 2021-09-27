@@ -46,7 +46,7 @@ export default function ProductItem(item) {
       <div>
         <span>${price}</span>
       </div>
-      <button onClick={() => console.log('addedtocart')}>Add to cart</button>
+      <button className='button button-primary' onClick={() => console.log('addedtocart')}>Add to cart</button>
     </div>
   );
 }

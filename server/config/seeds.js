@@ -52,7 +52,7 @@ db.once('open', async () => {
       name: 'Triangle',
       description:
         'An abstract art peice with different overlapping geometric shapes',
-      image: 'art-triangle.jpeg',
+      image: 'art-triangle.png',
       category: categories[1].name,
       price: 1.99
     },
@@ -72,14 +72,14 @@ db.once('open', async () => {
       category: categories[1].name,
       price: 1.99
     },
-    {
-      name: 'Flower',
-      description:
-        'A field of colorful flowers',
-      image: 'art-flower.jpeg',
-      category: categories[1].name,
-      price: 1.99
-    },
+    // {
+    //   name: 'Flower',
+    //   description:
+    //     'A field of colorful flowers',
+    //   image: 'art-flower.png',
+    //   category: categories[1].name,
+    //   price: 1.99
+    // },
     {
       name: 'Thriller',
       description:
@@ -92,7 +92,7 @@ db.once('open', async () => {
       name: 'Abbey Road',
       description:
         'The Beatles album Abbey Road',
-      image: 'album-abbyRoad.jpeg',
+      image: 'album-abbeyRoad.jpeg',
       category: categories[2].name,
       price: 2.99
     },
@@ -100,7 +100,7 @@ db.once('open', async () => {
       name: 'Adele',
       description:
         'Adeles self titles album',
-      image: 'album-adele.jpeg',
+      image: 'album-adele.jpg',
       category: categories[2].name,
       price: 1.99
     },
