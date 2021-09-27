@@ -45,12 +45,10 @@ function Profile() {
               <p>You have no saved products!</p>
             )}
           </>
-        ) : (
-          <h1>Oops! No user was found.</h1>
-        )}
+        ) : <h1>Oops! No user was found.</h1>}
       </div>
     </>
   );
 }
 
-export default Profile;
+export default Profile
