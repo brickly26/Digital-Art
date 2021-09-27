@@ -47,9 +47,9 @@ function App() {
       <Router>
         <StoreProvider>
         <div className="flex-column justify-flex-start min-100-vh">
+              <NavMenu />
           <div className="container">
             <Route exact path="/">
-              <NavMenu />
             </Route>
             <Route exact path="/login">
               <Login />
