@@ -16,6 +16,9 @@ import NavMenu from './components/NavMenu';
 // import SignupForm from './components/SignupForm';
 import Cart from './components/Cart';
 import Home from './pages/Home';
+import Footer from './components/footer';
+import NewsLetter from './components/NewsLetter';
+import Team from './components/Team';
 
 import { StoreProvider } from './utils/GlobalState';
 
@@ -48,27 +51,28 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <div className="container">
-            <Route exact path="/">
+          <div className="flex-column justify-flex-start min-100-vh">
               <NavMenu />
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/me">
-              <Profile />
-            </Route>
-            <Route exact path="/profiles/:username">
-              <Profile />
-            </Route>
-            <Cart />
+              <Route exact path="/">
+                <Home />
+                <Team />
+                <NewsLetter />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+              <Route exact path="/me">
+                <Profile />
+              </Route>
+              <Route exact path="/profiles/:username">
+                <Profile />
+              </Route>
+              <Cart />
+              <Footer />
           </div>
-        </div>
         </StoreProvider>
       </Router>
     </ApolloProvider>
