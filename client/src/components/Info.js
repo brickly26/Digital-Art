@@ -8,7 +8,7 @@ export default function Info() {
              <h1 className='info-heading'>
              <span>Welcome to DigiArt</span>
              <br />
-             <span>Buy, Auction & Sell</span>
+             <span>Buy & Sell</span>
              </h1>
          </div>
      </div>
