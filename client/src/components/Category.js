@@ -1,30 +1,37 @@
 import React, { useEffect } from 'react';
 import { useStoreContext } from '../utils/GlobalState';
-import { ProductItem } from '/ProductItem'
+import { useParams } from 'react-router-dom';
+import ProductItem from './ProductItem'
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../utils/queries';
-import { idbPromise } from '../utils/helpers';
+import { idbPromise } from '../utils/helper';
 
-function Categories() {
+export default function Category() {
   const [state, dispatch] = useStoreContext();
+  const { category } = useParams();
 
   const { currentCategory } = state;
+  console.log("id is:", category)
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_PRODUCTS, {
+    variables: { category: category }
+  });
+  console.log(data);
 
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {state.products.length ? (
+      {data ? (
         <div className="flex-row">
-          {filterProducts().map((product) => (
+          {data.products.map((product) => (
             <ProductItem
               key={product._id}
               _id={product._id}
               image={product.image}
               name={product.name}
               price={product.price}
-              quantity={product.quantity}
+              description={product.description}
+              sold={product.sold}
             />
           ))}
         </div>

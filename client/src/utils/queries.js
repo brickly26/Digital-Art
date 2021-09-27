@@ -50,7 +50,7 @@ export const QUERY_CHECKOUT = gql`
   }
 `;
 export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
+  query getProducts($category: String) {
     products(category: $category) {
       _id
       name
@@ -60,6 +60,7 @@ export const QUERY_PRODUCTS = gql`
       image
       category {
         _id
+        name
       }
     }
   }
