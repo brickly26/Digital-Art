@@ -134,15 +134,7 @@ export default function NavMenu() {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/categories"
-            onClick={() => setShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => setShowNav(!showNav)}
-            tabIndex={0}
-          >
-            Categories
-          </NavLink>
+          <a href='#categories'>Categories</a>
         </li>
         <li>
           <NavLink

@@ -43,7 +43,7 @@ const Home = () => {
 						<div class="hero-copy">
 	                        <h1 class="hero-title mt-0">Digi Art</h1>
 	                        <p class="hero-paragraph">Explore digital art and collectibles.</p>
-	                        <div class="hero-cta"><a class="button button-shadow" href="/#">Collect Digital Art</a><a class="button button-primary button-shadow" href="/#">Sell Digital Art</a></div>
+	                        <div class="hero-cta"><a class="button button-shadow" href="#categories">Collect Digital Art</a><a class="button button-primary button-shadow" href="/#">Sell Digital Art</a></div>
 						</div>
 						<div class="hero-app">
 							<div class="hero-app-illustration">
@@ -123,7 +123,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section class="features section">
+            <section class="features section" id='categories'>
                 <div class="container">
 					<div class="features-inner section-inner has-bottom-divider">
 						<h2 class="section-title mt-0">Catergory</h2>
