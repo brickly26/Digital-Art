@@ -1,4 +1,3 @@
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,8 +11,6 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import NavMenu from './components/NavMenu';
-// import LoginForm from './components/LoginForm';
-// import SignupForm from './components/SignupForm';
 import Cart from './components/Cart';
 import Home from './pages/Home';
 import Footer from './components/footer';
@@ -52,26 +49,26 @@ function App() {
       <Router>
         <StoreProvider>
           <div className="flex-column justify-flex-start min-100-vh">
-              <NavMenu />
-              <Route exact path="/">
-                <Home />
-                <Team />
-                <NewsLetter />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-              <Route exact path="/me">
-                <Profile />
-              </Route>
-              <Route exact path="/profiles/:username">
-                <Profile />
-              </Route>
-              <Cart />
-              <Footer />
+            <NavMenu />
+            <Route exact path="/">
+              <Home />
+              <Team />
+              <NewsLetter />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/me">
+              <Profile />
+            </Route>
+            <Route exact path="/profiles/:username">
+              <Profile />
+            </Route>
+            <Cart />
+            <Footer />
           </div>
         </StoreProvider>
       </Router>
