@@ -16,7 +16,7 @@ import Footer from './components/footer';
 import NewsLetter from './components/NewsLetter';
 import Team from './components/Team';
 import ProductList from './components/ProductList'
-import Category from './components/Category';
+//import Category from './components/Category';
 import Hero from './components/Hero'
 
 import { StoreProvider } from './utils/GlobalState';
@@ -56,7 +56,7 @@ function App() {
             <Route exact path="/">
               <Home />
               <Hero />
-              <Category />
+              {/* <Category /> */}
               <Team />
               <NewsLetter />
             </Route>
