@@ -14,7 +14,7 @@ const SignupStyles = styled.nav`
   input {
     margin-top: 3px;
     display: block;
-    width: 100%
+    width: 100%;
   }
   label {
     display: block;
@@ -48,7 +48,13 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await addUser({variables:{email: formState.email, password: formState.password, username: formState.username}});
+      const { data } = await addUser({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+          username: formState.username,
+        },
+      });
 
       Auth.login(data.addUser.token);
     } catch (e) {
@@ -104,8 +110,10 @@ const Signup = () => {
                   >
                     Sign Up!
                   </button>
-                  
-                  <Link className="button button-shadow" to="/login">Login</Link>
+
+                  <Link className="button button-shadow" to="/login">
+                    Login
+                  </Link>
                 </form>
               )}
 

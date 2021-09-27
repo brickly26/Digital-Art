@@ -13,7 +13,7 @@ const LoginStyles = styled.nav`
   input {
     margin-top: 3px;
     display: block;
-    width: 100%
+    width: 100%;
   }
   label {
     display: block;
@@ -99,9 +99,10 @@ const Login = (props) => {
                   >
                     Submit
                   </button>
-                  
-                  <Link className="button button-shadow" to="/signup">Sign Up</Link>
 
+                  <Link className="button button-shadow" to="/signup">
+                    Sign Up
+                  </Link>
                 </form>
               )}
 
