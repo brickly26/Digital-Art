@@ -1,5 +1,6 @@
 .cart {
-  position: fixed;
+  z-index: 10;
+  position: absolute;
   top: 0;
   right: 0;
   min-width: 20%;
@@ -32,7 +33,7 @@
 }
 
 .cart-closed {
-  position: fixed;
+  position: absolute;
   top: 2%;
   right: 1%;
   font-size: 2rem;

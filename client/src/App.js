@@ -11,14 +11,16 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import NavMenu from './components/NavMenu';
-import Cart from './components/Cart';
 import Home from './pages/Home';
 import Footer from './components/footer';
 import NewsLetter from './components/NewsLetter';
 import Team from './components/Team';
-import Category from './components/Category'
+import ProductList from './components/ProductList'
+import Category from './components/Category';
+import Hero from './components/Hero'
 
 import { StoreProvider } from './utils/GlobalState';
+import CategoryPage from './pages/CategoryPage';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -53,6 +55,8 @@ function App() {
             <NavMenu />
             <Route exact path="/">
               <Home />
+              <Hero />
+              <Category />
               <Team />
               <NewsLetter />
             </Route>
@@ -62,13 +66,15 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
+            <Route exact path="/categories">
+              <CategoryPage />
+            </Route>
             <Route exact path="/categories/:category">
-              <Category />
+              <ProductList />
             </Route>
             <Route exact path="/profile">
               <Profile />
             </Route>
-            <Cart />
             <Footer />
           </div>
         </StoreProvider>
