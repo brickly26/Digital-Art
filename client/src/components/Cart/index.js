@@ -54,7 +54,7 @@ const Cart = () => {
         productIds.push(item._id);
       }
     });
-
+    console.log('CHECKOUT');
     getCheckout({
       variables: { products: productIds },
     });
@@ -75,7 +75,10 @@ const Cart = () => {
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2>
+        <br />
+        Shopping Cart
+      </h2>
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
@@ -86,9 +89,15 @@ const Cart = () => {
             <strong>Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button
+                style={{ display: 'block' }}
+                className="button button-primary"
+                onClick={submitCheckout}
+              >
+                Checkout
+              </button>
             ) : (
-              <span>(must login)</span>
+              <span style={{ display: 'block' }}>Please Login</span>
             )}
           </div>
         </div>

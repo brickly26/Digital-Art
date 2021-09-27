@@ -30,6 +30,7 @@ const CartItem = ({ item }) => {
             role="img"
             aria-label="trash"
             onClick={() => removeFromCart(item)}
+            style={{ cursor: 'pointer ' }}
           >
             ✘
           </span>
