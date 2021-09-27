@@ -7,7 +7,7 @@ import { idbPromise } from '../utils/helper';
 export default function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
-  const { image, name, _id, price, description, sold } = item;
+  const { image, name, _id, price } = item;
 
   const { cart } = state;
 

@@ -1,22 +1,15 @@
-import React, { useEffect } from 'react';
-import { useStoreContext } from '../utils/GlobalState';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import ProductItem from './ProductItem'
+import ProductItem from './ProductItem';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../utils/queries';
-import { idbPromise } from '../utils/helper';
 
 export default function ProductList() {
-  const [state, dispatch] = useStoreContext();
   const { category } = useParams();
 
-  const { currentCategory } = state;
-  console.log("id is:", category)
-
   const { loading, data } = useQuery(QUERY_PRODUCTS, {
-    variables: { category: category }
+    variables: { category: category },
   });
-  console.log(data);
 
   return (
     <div className="my-2">
@@ -40,5 +33,5 @@ export default function ProductList() {
       )}
       {loading ? <h2>Loading: please hold</h2> : null}
     </div>
-  )
+  );
 }

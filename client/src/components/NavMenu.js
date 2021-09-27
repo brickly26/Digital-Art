@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { MdClose, MdMenu } from 'react-icons/md';
-import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth';
 import Cart from './Cart';
 
@@ -95,9 +93,7 @@ export default function NavMenu() {
 
   return (
     <div>
-      
       <NavStyles>
-        
         <div
           className="mobile-menu-icon"
           onClick={() => setShowNav(!showNav)}
@@ -109,7 +105,6 @@ export default function NavMenu() {
         </div>
 
         <ul className={!showNav ? 'navItems hide-item' : 'navItems'}>
-          
           <div
             className="closeNavIcon"
             onClick={() => setShowNav(!showNav)}
@@ -146,27 +141,27 @@ export default function NavMenu() {
             <a href="/categories">Categories</a>
           </li>
           <li>
-          {Auth.loggedIn() ? (
-            <NavLink
-              to="/profile"
-              onClick={() => setShowNav(!showNav)}
-              role="button"
-              onKeyDown={() => setShowNav(!showNav)}
-              tabIndex={0}
-            >
-              Profile
-            </NavLink>
-          ) : (
-            <NavLink
-              to="/login"
-              onClick={() => setShowNav(!showNav)}
-              role="button"
-              onKeyDown={() => setShowNav(!showNav)}
-              tabIndex={0}
-            >
-              Profile
-            </NavLink>
-          )}
+            {Auth.loggedIn() ? (
+              <NavLink
+                to="/profile"
+                onClick={() => setShowNav(!showNav)}
+                role="button"
+                onKeyDown={() => setShowNav(!showNav)}
+                tabIndex={0}
+              >
+                Profile
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                onClick={() => setShowNav(!showNav)}
+                role="button"
+                onKeyDown={() => setShowNav(!showNav)}
+                tabIndex={0}
+              >
+                Profile
+              </NavLink>
+            )}
           </li>
           {Auth.loggedIn() ? (
             <a href="/" onClick={() => Auth.logout()}>
