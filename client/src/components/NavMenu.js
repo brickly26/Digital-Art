@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { MdClose, MdMenu } from 'react-icons/md';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries';
+import Auth from '../utils/auth';
 
 const NavStyles = styled.nav`
   z-index: 100;
@@ -88,6 +91,7 @@ const NavStyles = styled.nav`
 
 export default function NavMenu() {
   const [showNav, setShowNav] = useState(false);
+
   return (
     <NavStyles>
       <div
@@ -134,7 +138,7 @@ export default function NavMenu() {
           </NavLink>
         </li>
         <li>
-          <a href='#categories'>Categories</a>
+          <a href="#categories">Categories</a>
         </li>
         <li>
           <NavLink
@@ -147,12 +151,22 @@ export default function NavMenu() {
             Profile
           </NavLink>
         </li>
-        <NavLink to="/login"
+        {Auth.loggedIn() ? (
+          <a href="/" onClick={() => Auth.logout()}>
+            Logout
+          </a>
+        ) : (
+          <NavLink
+            to="/login"
             onClick={() => setShowNav(!showNav)}
             role="button"
             onKeyDown={() => setShowNav(!showNav)}
             tabIndex={0}
-            className='login-btn'>Login</NavLink>
+            className="login-btn"
+          >
+            Login
+          </NavLink>
+        )}
       </ul>
     </NavStyles>
   );
