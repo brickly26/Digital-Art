@@ -16,6 +16,7 @@ import Home from './pages/Home';
 import Footer from './components/footer';
 import NewsLetter from './components/NewsLetter';
 import Team from './components/Team';
+import Category from './components/Category'
 
 import { StoreProvider } from './utils/GlobalState';
 
@@ -61,8 +62,8 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            <Route exact path="/me">
-              <Profile />
+            <Route exact path="/categories/:category">
+              <Category />
             </Route>
             <Route exact path="/profile">
               <Profile />

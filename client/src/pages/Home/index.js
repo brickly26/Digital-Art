@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-  
     <div class="body-wrap boxed-container">
         <header class="site-header">
             <div class="container">
@@ -128,7 +127,7 @@ const Home = () => {
 					<div class="features-inner section-inner has-bottom-divider">
 						<h2 class="section-title mt-0">Catergory</h2>
                         <div class="features-wrap">
-												<Link to={'/Artwork'}>
+												<Link to={'/categories/Art'}>
                             <div class="feature is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
@@ -155,7 +154,7 @@ const Home = () => {
                                 </div>
                             </div>
 														</Link>
-														<Link to={'/SportsCards'}>
+														<Link to={'/categories/SportsCards'}>
 							<div class="feature is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
@@ -182,7 +181,7 @@ const Home = () => {
                                 </div>
                             </div>
 														</Link>
-														<Link to={'/Photography'}>
+														<Link to={'/categories/Photography'}>
                             <div class="feature is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
@@ -214,7 +213,7 @@ const Home = () => {
                                 </div>
                             </div>
 														</Link>
-														<Link to={'/Album'}>
+														<Link to={'/categories/Albums'}>
                             <div class="feature is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
