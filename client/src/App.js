@@ -1,4 +1,3 @@
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,9 +11,12 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import NavMenu from './components/NavMenu';
-// import LoginForm from './components/LoginForm';
-// import SignupForm from './components/SignupForm';
 import Cart from './components/Cart';
+import Home from './pages/Home';
+import Footer from './components/footer';
+import NewsLetter from './components/NewsLetter';
+import Team from './components/Team';
+
 import { StoreProvider } from './utils/GlobalState';
 
 // Construct our main GraphQL API endpoint
@@ -46,10 +48,12 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-        <div className="flex-column justify-flex-start min-100-vh">
-              <NavMenu />
-          <div className="container">
+          <div className="flex-column justify-flex-start min-100-vh">
+            <NavMenu />
             <Route exact path="/">
+              <Home />
+              <Team />
+              <NewsLetter />
             </Route>
             <Route exact path="/login">
               <Login />
@@ -64,8 +68,8 @@ function App() {
               <Profile />
             </Route>
             <Cart />
+            <Footer />
           </div>
-        </div>
         </StoreProvider>
       </Router>
     </ApolloProvider>

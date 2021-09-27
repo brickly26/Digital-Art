@@ -1,9 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import styled from 'styled-components';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+
+const LoginStyles = styled.nav`
+  .card {
+    margin: 5%;
+  }
+  input {
+    margin-top: 3px;
+    display: block;
+    width: 100%;
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+  }
+  .button {
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+`;
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -41,56 +61,61 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-                
-                <Link to="/signup">Sign Up</Link>
+    <LoginStyles>
+      <main className="flex-row justify-center mb-4">
+        <div className="col-12 col-lg-10">
+          <div className="card">
+            <h2 className="card-header bg-dark text-light p-2">Login</h2>
+            <div className="card-body">
+              {data ? (
+                <p>
+                  Success! You may now head{' '}
+                  <Link to="/">back to the homepage.</Link>
+                </p>
+              ) : (
+                <form onSubmit={handleFormSubmit}>
+                  <label>Email:</label>
+                  <input
+                    className="form-input"
+                    placeholder="eggsNbenny@gmail.com"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                  <label>Password:</label>
+                  <input
+                    className="form-input"
+                    placeholder="**********"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                  <button
+                    className="button button-shadow button-primary"
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
 
-              </form>
-            )}
+                  <Link className="button button-shadow" to="/signup">
+                    Sign Up
+                  </Link>
+                </form>
+              )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+              {error && (
+                <div className="my-3 p-3 bg-danger text-white">
+                  {error.message}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </LoginStyles>
   );
 };
 
