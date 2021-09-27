@@ -4,6 +4,29 @@ import { useStoreContext } from '../utils/GlobalState';
 import { ADD_TO_CART } from '../utils/actions';
 import { idbPromise } from '../utils/helper';
 
+const style = {
+  card: {
+    width: '20%',
+    border: '#5b6c85 solid 4px',
+    borderRadius: '15px'
+  },
+  img: {
+    width: '100%',
+    height: '200px',
+    borderTopRightRadius: '11px',
+    borderTopLeftRadius: '11px',
+    borderBottom: '#5b6c85 solid 4px',
+  },
+  button: {
+    borderBottomRightRadius: '11px',
+    borderBottomLeftRadius: '11px',
+    width:'100%'
+  },
+  text: {
+    marginLeft: '5px'
+  }
+}
+
 export default function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
@@ -28,17 +51,27 @@ export default function ProductItem(item) {
   };
 
   return (
-    <div className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
-        <img alt={name} src={`/images/${image}`} />
-        <p>{name}</p>
-      </Link>
+    <div style={style.card} className="card px-1 py-1">
+      <img style={style.img} alt={name} src={`/images/${image}`} />
+      <h3 style={{color: '#fa425f', textAlign: 'center',}}>{name}</h3>
       <div>
-        <span>${price}</span>
+        <span style={style.text}>${price}</span>
       </div>
-      <button className="button button-primary" onClick={addToCart}>
-        Add to cart
-      </button>
+      {!sold ? (
+        <><div>
+          <span style={style.text}>In Stock</span>
+        </div>
+        <button style={style.button} className="button button-primary" onClick={addToCart}>
+          Add to cart
+        </button></>
+      ): (
+        <><div>
+          <span>Sold Out</span>
+        </div>
+        <button style={style.button} className="button button-shadow" onClick={addToCart}>
+          Add to cart
+        </button></>
+      )}
     </div>
   );
 }
