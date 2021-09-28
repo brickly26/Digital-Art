@@ -6,8 +6,14 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      console.log(context);
-      return await User.findById(context.user._id).populate('saveProduct');
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate(
+          'saveProduct'
+        );
+        return user;
+      }
+
+      throw new AuthenticationError('Not logged in');
     },
     categories: async () => {
       return await Category.find();
@@ -44,16 +50,16 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = await new Order({ products: args.products });
       const line_items = [];
 
-      const { products } = await order.populate('products').execPopulate();
+      const { products } = await order.populate('products');
 
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          // images: [`${url}/images/${products[i].image}`],
+          images: [`${url}/images/${products[i].image}`],
         });
 
         const price = await stripe.prices.create({
@@ -67,7 +73,6 @@ const resolvers = {
           quantity: 1,
         });
       }
-
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items,
@@ -79,8 +84,6 @@ const resolvers = {
       return { session: session.id };
     },
   },
-
-  // Upload: GraphQLUpload,
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -115,7 +118,6 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     addOrder: async (parent, { products }, context) => {
-      console.log(context);
       if (context.user) {
         const order = new Order({ products });
 
@@ -139,7 +141,7 @@ const resolvers = {
     //   if (context.user) {
 
     //     const { stream, filename, mimetype, encoding } = await filename;
-    //     const bucket = new 
+    //     const bucket = new
 
     //     return await Product.create({
     //       name,

@@ -1,5 +1,6 @@
 .cart {
-  position: fixed;
+  z-index: 10;
+  position: absolute;
   top: 0;
   right: 0;
   min-width: 20%;
@@ -10,6 +11,7 @@
   padding: 0.5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
   border-bottom-left-radius: 0.5rem;
+  background-color: #283c5a;
 }
 
 .cart h2 {
@@ -32,7 +34,7 @@
 }
 
 .cart-closed {
-  position: fixed;
+  position: absolute;
   top: 2%;
   right: 1%;
   font-size: 2rem;

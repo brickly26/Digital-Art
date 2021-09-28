@@ -1,4 +1,3 @@
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,14 +11,18 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import NavMenu from './components/NavMenu';
-// import LoginForm from './components/LoginForm';
-// import SignupForm from './components/SignupForm';
-import Cart from './components/Cart';
 import Home from './pages/Home';
+import Footer from './components/footer';
+import NewsLetter from './components/NewsLetter';
+import Team from './components/Team';
+import ProductList from './components/ProductList'
+import Category from './components/Category';
+import Hero from './components/Hero'
 
 
 
 import { StoreProvider } from './utils/GlobalState';
+import CategoryPage from './pages/CategoryPage';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -50,11 +53,14 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <div className="container">
+          <div className="flex-column justify-flex-start min-100-vh">
+            <NavMenu />
             <Route exact path="/">
-              <NavMenu />
               <Home />
+              <Hero />
+              <Category />
+              <Team />
+              <NewsLetter />
             </Route>
             <Route exact path="/login">
               <Login />
@@ -62,15 +68,17 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            <Route exact path="/me">
+            <Route exact path="/categories">
+              <CategoryPage />
+            </Route>
+            <Route exact path="/categories/:category">
+              <ProductList />
+            </Route>
+            <Route exact path="/profile">
               <Profile />
             </Route>
-            <Route exact path="/profiles/:username">
-              <Profile />
-            </Route>
-            <Cart />
+            <Footer />
           </div>
-        </div>
         </StoreProvider>
       </Router>
     </ApolloProvider>

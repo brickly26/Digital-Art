@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { MdClose, MdMenu } from 'react-icons/md';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries';
+import Auth from '../utils/auth';
+import Cart from './Cart';
 
 const NavStyles = styled.nav`
-  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
   padding: 1rem 0;
-  background: var(--dark-bg);
+  background: #06101f;
   ul {
     max-width: 1200px;
     margin: 0 auto;
@@ -89,28 +92,25 @@ const NavStyles = styled.nav`
 
 export default function NavMenu() {
   const [showNav, setShowNav] = useState(false);
-  return (
-    <NavStyles>
-      <div
-        className="mobile-menu-icon"
-        onClick={() => setShowNav(!showNav)}
-        role="button"
-        onKeyDown={() => setShowNav(!showNav)}
-        tabIndex={0}
-      >
-        <MdMenu />
-      </div>
 
-      <ul className={!showNav ? 'navItems hide-item' : 'navItems'}>
+  return (
+    <div>
+      
+      <NavStyles>
+        
         <div
-          className="closeNavIcon"
+          className="mobile-menu-icon"
           onClick={() => setShowNav(!showNav)}
           role="button"
           onKeyDown={() => setShowNav(!showNav)}
           tabIndex={0}
         >
-          <MdClose />
+          <MdMenu />
         </div>
+</NavStyles>
+</div>
+
+//<<<<<<< HEAD
         <li>
           <NavLink
             to="/"
@@ -148,21 +148,88 @@ export default function NavMenu() {
         <li>
           <NavLink
             to="/profile"
+=======
+
+        <ul className={!showNav ? 'navItems hide-item' : 'navItems'}>
+          
+          <div
+            className="closeNavIcon"
+>>>>>>> 852141c00ba9242ac259394768d0429fb2ff2de7
             onClick={() => setShowNav(!showNav)}
             role="button"
             onKeyDown={() => setShowNav(!showNav)}
             tabIndex={0}
           >
-            Profile
-          </NavLink>
-        </li>
-        <NavLink to="/login"
-            onClick={() => setShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => setShowNav(!showNav)}
-            tabIndex={0}
-            className='login-btn'>Login</NavLink>
-      </ul>
-    </NavStyles>
+            <MdClose />
+          </div>
+          <li>
+            <NavLink
+              to="/"
+              exact
+              onClick={() => setShowNav(!showNav)}
+              role="button"
+              onKeyDown={() => setShowNav(!showNav)}
+              tabIndex={0}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/search"
+              onClick={() => setShowNav(!showNav)}
+              role="button"
+              onKeyDown={() => setShowNav(!showNav)}
+              tabIndex={0}
+            >
+              Search
+            </NavLink>
+          </li>
+          <li>
+            <a href="/categories">Categories</a>
+          </li>
+          <li>
+          {Auth.loggedIn() ? (
+            <NavLink
+              to="/profile"
+              onClick={() => setShowNav(!showNav)}
+              role="button"
+              onKeyDown={() => setShowNav(!showNav)}
+              tabIndex={0}
+            >
+              Profile
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/login"
+              onClick={() => setShowNav(!showNav)}
+              role="button"
+              onKeyDown={() => setShowNav(!showNav)}
+              tabIndex={0}
+            >
+              Profile
+            </NavLink>
+          )}
+          </li>
+          {Auth.loggedIn() ? (
+            <a href="/" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+          ) : (
+            <NavLink
+              to="/login"
+              onClick={() => setShowNav(!showNav)}
+              role="button"
+              onKeyDown={() => setShowNav(!showNav)}
+              tabIndex={0}
+              className="login-btn"
+            >
+              Login
+            </NavLink>
+          )}
+        </ul>
+      </NavStyles>
+      <Cart />
+    </div>
   );
 }
