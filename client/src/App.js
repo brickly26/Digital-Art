@@ -17,6 +17,8 @@ import NavMenu from './components/NavMenu';
 import Cart from './components/Cart';
 import Home from './pages/Home';
 
+
+
 import { StoreProvider } from './utils/GlobalState';
 
 // Construct our main GraphQL API endpoint
